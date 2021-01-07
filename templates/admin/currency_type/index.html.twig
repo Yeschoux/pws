@@ -1,0 +1,40 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}CurrencyType index{% endblock %}
+
+{% block body %}
+<div class="content">
+    <main>
+    <h1>CurrencyType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for currency_type in currency_types %}
+            <tr>
+                <td>{{ currency_type.id }}</td>
+                <td>{{ currency_type.name }}</td>
+                <td>
+                    <a href="{{ path('currency_type_show', {'id': currency_type.id}) }}">show</a>
+                    <a href="{{ path('currency_type_edit', {'id': currency_type.id}) }}">edit</a>
+                    {{ include('admin/currency_type/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('currency_type_new') }}">Create new</a>
+    </main>
+</div>
+{% endblock %}

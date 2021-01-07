@@ -1,0 +1,16 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Edit Mount{% endblock %}
+
+{% block body %}
+<div class="content">
+    <main>
+    <h1>Edit Mount</h1>
+
+    {{ include('admin/mount/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('mount_index') }}">back to list</a>
+
+    {{ include('admin/mount/_delete_form.html.twig') }}
+    </main>
+</div>
+{% endblock %}

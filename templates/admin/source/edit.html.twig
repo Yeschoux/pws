@@ -1,0 +1,17 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit Source{% endblock %}
+
+{% block body %}
+<div class="content">
+    <main>
+    <h1>Edit Source</h1>
+
+    {{ include('admin/source/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('source_index') }}">back to list</a>
+
+    {{ include('admin/source/_delete_form.html.twig') }}
+    </main>
+</div>
+{% endblock %}

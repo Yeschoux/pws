@@ -1,0 +1,17 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit Expansion{% endblock %}
+
+{% block body %}
+<div class="content">
+    <main>
+    <h1>Edit Expansion</h1>
+
+    {{ include('admin/expansion/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('expansion_index') }}">back to list</a>
+
+    {{ include('admin/expansion/_delete_form.html.twig') }}
+    </main>
+</div>
+{% endblock %}

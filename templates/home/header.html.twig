@@ -1,0 +1,67 @@
+<!-- Fixed navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+    <div class="container">
+        <div class="navbar-header">
+            <!-- Button for smallest screens -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand logo" href="{{ path('main') }}"><img src="assets/images/logo_wow.png" alt="Progressus HTML5 template"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-right">
+                {% if(page == 'home') %}
+                <li class="active"><a href="{{ path('main') }}">Accueil</a></li>
+                <li><a href="{{ path('research') }}">Recherche</a></li>
+                <li><a href="{{ path('profile') }}">Profil</a></li>
+                {% if app.user %}
+                    <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a class="btn" href="{{ path('login') }}">Identification / Inscription</a></li>
+                {% endif %}
+
+
+                {% elseif(page == 'research') %}
+                <li><a href="{{ path('main') }}">Accueil</a></li>
+                <li class="active"><a href="{{ path('research') }}">Recherche</a></li>
+                <li><a href="{{ path('profile') }}">Profil</a></li>
+                {% if app.user %}
+                    <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a class="btn" href="{{ path('login') }}">Identification / Inscription</a></li>
+                {% endif %}
+
+
+                {% elseif(page == 'profile') %}
+                <li><a href="{{ path('main') }}">Accueil</a></li>
+                <li><a href="{{ path('research') }}">Recherche</a></li>
+                <li class="active"><a href="{{ path('profile') }}">Profil</a></li>
+                {% if app.user %}
+                    <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a class="btn" href="{{ path('login') }}">Identification / Inscription</a></li>
+                {% endif %}
+                
+                {% elseif(page == 'reg') %}
+                <li><a href="{{ path('main') }}">Accueil</a></li>
+                <li><a href="{{ path('research') }}">Recherche</a></li>
+                <li><a href="{{ path('profile') }}">Profil</a></li>
+                    {% if app.user %}
+                        <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                    {% else %}
+                        <li class="active"><a class="btn" href="{{ path('login') }}">Identification / Inscription</a></li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+<!-- /.navbar -->
+
+<!-- Header -->
+<header id="head">
+    <div class="container">
+        <div class="row">
+            <h1 class="lead">Annuaire des montures de World of Warcraft</h1>
+        </div>
+    </div>
+</header>
+<!-- /Header -->

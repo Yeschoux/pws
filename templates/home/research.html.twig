@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherce{% endblock %}
+{% block body %}
+    <!-- container -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="index.html">Accueil</a></li>
+            <li class="active">Annuaire</li>
+        </ol>
+
+        <header class="page-header">
+            <h1 class="page-title">Annuaire</h1>
+        </header>
+
+        <div class="row">
+
+            <!-- Article main content -->
+            <br class="col-sm-12 maincontent">
+            <!--	<header class="page-header">
+                    <h1 class="page-title">About us</h1>
+                </header> -->
+            <form method="post" action="" style="margin-left:320px" class="col-sm-4 text-center margin-bot top-15 form-inline">
+                <div class="form-group">
+                <input type="text" name="name" placeholder="Nom de la monture" class="form-control"/><br />
+                <select id="faction" name="faction" class="form-control">
+                    <option value="">All</option>
+                    <option value="Alliance">Alliance</option>
+                    <option value="Horde">Horde</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <select id="expansion" name="expansion_form" class="form-control">
+                    <option value="">All</option>
+                    {% for exp in expansions %}
+                    <option value="{{ exp.name }}">{{ exp.name }}</option>
+                    {% endfor %}
+                </select>
+                <select id="type" name="type" class="form-control">
+                    <option value="">All</option>
+                    <option value="Eartly">Eartly</option>
+                    <option value="Flying">Flying</option>
+                    <option value="Aquatic">Aquatic</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <select id="source" name="source" class="form-control">
+                    <option value="">All</option>
+                    {% for src in sources %}
+                        <option value="{{ src.name }}">{{ src.name }}</option>
+                    {% endfor %}
+                </select>
+                <select id="currency" name="currency" class="form-control">
+                    <option value="">All</option>
+                    {% for curr in currency %}
+                        <option value="{{ curr.name }}">{{ curr.name }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <div class="form-group">
+                <input class="margin-bot btn btn-group-justified"
+                       type="submit"
+                       value="Rechercher">
+                </div>
+            </form>
+
+
+
+
+            <table class="table">
+                <tr class="bg-primary">
+                    <td class="col">Nom</td>
+                    <td class="col text-center">Type</td>
+                    <td class="col text-center">Faction</td>
+                    <td class="col text-center">Source</td>
+                    <td class="col text-center">Image</td>
+
+                </tr>
+                {%  for mount in mounts %}
+                    <tr class="bg-danger">
+                        <td class="col"><a href="mount/{{ mount.id }}">{{ mount.name }}</a></td>
+                        <td class="col text-center">{{ mount.type }}</td>
+                        <td class="col text-center">{{ mount.faction }}</td>
+                        <td class="col text-center">{{ mount.source }}</td>
+                        <td class="col text-center"><img src="{{ asset('assets/uploads/images/' ~mount.image) }}" class="logo-mount" alt="mini-mount"></td>
+                    </tr>
+                {%  endfor %}
+            </table>
+            <p class="text-right"> {{ knp_pagination_render(mounts) }}</p>
+
+        </div>
+    </div>	<!-- /container -->
+{% endblock %}

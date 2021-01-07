@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherce{% endblock %}
+{% block body %}
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="{{ path('main') }}">Accueil</a></li>
+            <li class="active">Identification</li>
+        </ol>
+
+        <div class="row">
+
+            <!-- Article main content -->
+            <article class="col-xs-12 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Identification</h1>
+                </header>
+
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3 class="thin text-center">Connectez-vous à votre compte</h3>
+                            <p class="text-center text-muted">Si vous n'avez pas encore de compte, veuillez-vous <a href="{{ path('register') }}" class="up">Inscrire</a>, afin de pouvoir vous connecter.</p>
+                            <hr>
+
+                            <form method="post" action="{{ path('login') }}">
+                                <div class="top-margin">
+                                    <label>Email <span class="text-danger">*</span></label>
+                                    <input type="text" name="email" id="inputEmail" class="form-control">
+                                </div>
+                                <div class="top-margin">
+                                    <label>Mot de passe <span class="text-danger">*</span></label>
+                                    <input type="password" name="password" id="inputPassword" class="form-control">
+                                </div>
+
+                                <hr>
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}"
+                                >
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <b><a href="{{ path('forgot_pwd') }}">Mot de passe oublié ?</a></b>
+                                    </div>
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-action" type="submit">Envoyer</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </article>
+            <!-- /Article -->
+
+        </div>
+    </div>	<!-- /container -->
+{% endblock %}

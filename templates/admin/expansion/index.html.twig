@@ -1,0 +1,40 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Expansion index{% endblock %}
+
+{% block body %}
+<div class="content">
+    <main>
+    <h1>Expansion index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for expansion in expansions %}
+            <tr>
+                <td>{{ expansion.id }}</td>
+                <td>{{ expansion.name }}</td>
+                <td>
+                    <a href="{{ path('expansion_show', {'id': expansion.id}) }}">show</a>
+                    <a href="{{ path('expansion_edit', {'id': expansion.id}) }}">edit</a>
+                    {{ include('admin/expansion/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('expansion_new') }}">Create new</a>
+    </main>
+</div>
+{% endblock %}

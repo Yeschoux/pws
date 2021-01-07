@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+{% block body %}
+    <!-- container -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="{{ path('main') }}">Accueil</a></li>
+            <li class="active">Profil</li>
+        </ol>
+
+        <div class="row">
+
+            <!-- Article main content -->
+            <article class="maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Bonjour ({{ app.user.uname }})</h1>
+                </header>
+
+                <div>
+                    <div class="col-sm-4">
+                        <img src="{{ asset('assets/uploads/images/' ~app.user.image) }}" alt="profil">
+                    </div>
+                    <div class="col-sm-8 text-justify">
+                        <a color="#000" href="{{ path('edit_profile') }}">Edit Profile
+                        </a>
+                        <a color="#000" href="{{ path('change_password') }}">Change Password
+                        </a>
+                        <p class="top-margin">Description de ({{app.user.uname}})</p>
+                        <p>{{ app.user.description }}</p>
+
+                        <p>Rôle : Novice</p>
+
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>	<!-- /container -->
+{% endblock %}
